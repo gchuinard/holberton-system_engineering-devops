@@ -5,16 +5,16 @@
 # displays 17 and then bad luck from Italy for the 17th loop iteration
 
 i=1
-while [[ i -le 20 ]]
+while [[ $i -le 20 ]]
 do
 	echo $i
-	if [[ i -eq 4 ]]
+	if [[ $i -eq 4 ]]
 	then
 		echo "Bad luck from China"
-	elif [[ i -eq 9 ]]
+	elif [[ $i -eq 9 ]]
 	then
 		echo "Bad luck from Japan"
-	elif [[ i -eq 17 ]]
+	elif [[ $i -eq 17 ]]
 	then
 		echo "Bad luck from Italy"
 	fi
