@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # ping 5 time an ip adress pass in argument
 
 if [ $# -eq 0 ]
