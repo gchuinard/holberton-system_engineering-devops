@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# set the nginx server, restart it  and debbug the conf file.
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
+sudo sed -i 's,pid /run/nginx.pid,pid /run/nginxx.pid,' /etc/nginx/nginx.conf
