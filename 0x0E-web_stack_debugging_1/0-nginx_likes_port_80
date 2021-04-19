@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# start nginx on docker
+# set the nginx server and restart it
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
