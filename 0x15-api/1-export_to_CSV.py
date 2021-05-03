@@ -7,7 +7,7 @@ and export data in the CSV format.
 import csv
 import json
 import requests
-from sys import argv
+import sys
 
 
 def main():
@@ -18,7 +18,7 @@ def main():
     urlId = url + 'todos/?userId=' + user
     totalTasks = json.loads(requests.get(urlId).text)
 
-    dataFile = open(userId + '.csv', 'w')
+    dataFile = open(user + '.csv', 'w')
     csvWriter = csv.writer(dataFile, quoting=csv.QUOTE_ALL)
 
     for task in totalTasks:
