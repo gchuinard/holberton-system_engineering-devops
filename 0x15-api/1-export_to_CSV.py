@@ -13,9 +13,9 @@ from sys import argv
 def main():
     employeeId = argv[1]
     userData = requests.get('https://jsonplaceholder.typicode.com/users?id={}'
-                              .format(employeeId)).json()
+                            .format(employeeId)).json()
     tasks = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
-                          .format(employeeId)).json()
+                         .format(employeeId)).json()
     username = userData[0]['username']
 
     with open(str(employeeId) + ".csv", mode="w") as employeeF:
@@ -23,6 +23,8 @@ def main():
 
     for task in tasks:
         fWrite.writerow([task['userId'], username,
-                          task['completed'], task['title']])
+                         task['completed'], task['title']])
+
+
 if __name__ == "__main__":
     main()
