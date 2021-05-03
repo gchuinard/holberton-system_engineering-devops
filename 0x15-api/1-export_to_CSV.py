@@ -11,19 +11,24 @@ from sys import argv
 
 
 def main():
-    employeeId = argv[1]
-    userData = requests.get('https://jsonplaceholder.typicode.com/users?id={}'
-                            .format(employeeId)).json()
-    tasks = requests.get('https://jsonplaceholder.typicode.com/todos?userId={}'
-                         .format(employeeId)).json()
-    username = userData[0]['username']
+    url = 'https://jsonplaceholder.typicode.com/'
+    user = sys.argv[1]
+    urlId = url + 'users/?id=' + user
+    employee = json.loads(requests.get(urlId).text)
+    urlId = url + 'todos/?userId=' + user
+    totalTasks = json.loads(requests.get(urlId).text)
 
-    with open(str(employeeId) + ".csv", mode="w") as employeeF:
-        fWrite = csv.writer(employeeF, quoting=csv.QUOTE_ALL)
+    dataFile = open(userId + '.csv', 'w')
+    csvWriter = csv.writer(dataFile, quoting=csv.QUOTE_ALL)
 
-    for task in tasks:
-        fWrite.writerow([task['userId'], username,
-                         task['completed'], task['title']])
+    for task in totalTasks:
+        row = []
+        row.append(str(user))
+        row.append(employee[0]['username'])
+        row.append(task['completed'])
+        row.append(task['title'])
+        csvWriter.writerow(row)
+    dataFile.close()
 
 
 if __name__ == "__main__":
